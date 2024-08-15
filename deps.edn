@@ -1,0 +1,15 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.3"}
+        org.clojure/spec.alpha {:mvn/version "0.5.238"}
+        org.clojure/test.check {:mvn/version "1.1.1"}}
+ :aliases
+ {:run-m {:main-opts ["-m" "raszi.spec-overrides"]}
+  :run-x {:ns-default raszi.spec-overrides
+          :exec-fn greet
+          :exec-args {:name "Clojure"}}
+  :build {:deps {io.github.clojure/tools.build
+                 {:mvn/version "0.10.3"}}
+          :ns-default build}
+  :test {:extra-paths ["test"]
+         :extra-deps {io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}}}
